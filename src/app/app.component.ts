@@ -6,14 +6,5 @@ import { CodeCompressorComponent } from './code-compressor/code-compressor.compo
   standalone: true,
   imports: [CodeCompressorComponent],
   template: '<app-code-compressor></app-code-compressor>',
-  styles: [
-    `
-      :host {
-        display: block;
-        width: 100%;
-        min-height: 100vh;
-      }
-    `,
-  ],
 })
 export class AppComponent {}
