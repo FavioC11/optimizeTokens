@@ -1,0 +1,164 @@
+<div class="compressor-container">
+  <header class="app-header">
+    <h1>🗜️ Compresor de Código para Claude</h1>
+    <p class="subtitle">
+      Minimiza tokens manteniendo legibilidad perfecta para Claude AI
+    </p>
+  </header>
+
+  <div class="controls-bar">
+    <div class="language-selector">
+      <label for="language">Lenguaje:</label>
+      <select id="language" [(ngModel)]="selectedLanguage" class="select-input">
+        <option value="typescript">TypeScript</option>
+        <option value="html">HTML</option>
+        <option value="css">CSS</option>
+        <option value="json">JSON</option>
+      </select>
+    </div>
+
+    <button (click)="loadExample()" class="btn btn-secondary">
+      📝 Cargar Ejemplo
+    </button>
+
+    <button (click)="clear()" class="btn btn-danger">🗑️ Limpiar</button>
+  </div>
+
+  <div class="editor-container">
+    <div class="editor-panel">
+      <div class="panel-header">
+        <h3>📄 Código Original</h3>
+        <div class="header-actions">
+          <button
+            (click)="copyToClipboard(inputCode)"
+            class="btn-icon"
+            title="Copiar"
+          >
+            📋
+          </button>
+        </div>
+      </div>
+      <textarea
+        [(ngModel)]="inputCode"
+        class="code-editor"
+        placeholder="Pega aquí tu código TypeScript, HTML, CSS o JSON..."
+        spellcheck="false"
+      ></textarea>
+      <div class="panel-footer">
+        <span class="token-count"
+          >Tokens estimados: {{ estimateTokens(inputCode) }}</span
+        >
+      </div>
+    </div>
+
+    <div class="action-buttons">
+      <button (click)="compress()" class="btn btn-primary btn-large">
+        ⬇️ COMPRIMIR
+      </button>
+
+      <button
+        (click)="swapInputOutput()"
+        class="btn btn-secondary"
+        title="Intercambiar"
+      >
+        🔄
+      </button>
+
+      <button (click)="decompress()" class="btn btn-success btn-large">
+        ⬆️ DESCOMPRIMIR
+      </button>
+    </div>
+
+    <div class="editor-panel">
+      <div class="panel-header">
+        <h3>⚡ Código Comprimido</h3>
+        <div class="header-actions">
+          <button
+            (click)="copyToClipboard(outputCode)"
+            class="btn-icon"
+            title="Copiar"
+          >
+            📋
+          </button>
+        </div>
+      </div>
+      <textarea
+        [(ngModel)]="outputCode"
+        class="code-editor"
+        placeholder="El código comprimido aparecerá aquí..."
+        spellcheck="false"
+      ></textarea>
+      <div class="panel-footer">
+        <span class="token-count"
+          >Tokens estimados: {{ estimateTokens(outputCode) }}</span
+        >
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-panel" *ngIf="stats">
+    <h3>📊 Estadísticas de Compresión</h3>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">{{ stats.original }}</div>
+        <div class="stat-label">Tokens Originales</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">{{ stats.compressed }}</div>
+        <div class="stat-label">Tokens Comprimidos</div>
+      </div>
+      <div class="stat-card stat-highlight">
+        <div class="stat-value">{{ stats.saved }}</div>
+        <div class="stat-label">Tokens Ahorrados</div>
+      </div>
+      <div class="stat-card stat-success">
+        <div class="stat-value">{{ stats.percentage.toFixed(1) }}%</div>
+        <div class="stat-label">Reducción</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="info-section">
+    <h3>ℹ️ Cómo Funciona</h3>
+    <div class="info-grid">
+      <div class="info-card">
+        <h4>✨ Compresión Inteligente</h4>
+        <ul>
+          <li>Elimina comentarios innecesarios</li>
+          <li>Reduce espacios en blanco múltiples</li>
+          <li>Comprime estructuras sin perder semántica</li>
+          <li>Mantiene saltos de línea estratégicos</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>🎯 Optimizado para Claude</h4>
+        <ul>
+          <li>Claude puede leer el código comprimido perfectamente</li>
+          <li>Ahorra hasta 40-60% de tokens</li>
+          <li>Reversible al 100% con descompresión</li>
+          <li>Ideal para contextualizar código en prompts</li>
+        </ul>
+      </div>
+      <div class="info-card">
+        <h4>🔐 Privacidad Total</h4>
+        <ul>
+          <li>Todo el procesamiento es local en tu navegador</li>
+          <li>No se envía código a ningún servidor</li>
+          <li>Tu código nunca sale de tu computadora</li>
+          <li>100% seguro y privado</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <footer class="app-footer">
+    <p>
+      💡 <strong>Tip:</strong> Usa el código comprimido en tus conversaciones
+      con Claude para ahorrar tokens y obtener mejores respuestas.
+    </p>
+    <p class="footer-note">
+      Esta herramienta te ayuda a maximizar tu límite de tokens mientras
+      mantienes la calidad del análisis de Claude.
+    </p>
+  </footer>
+</div>
