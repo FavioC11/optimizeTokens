@@ -1,3 +1,5 @@
+[![Netlify Status](https://api.netlify.com/api/v1/badges/02758de5-5aa5-4ae7-83d0-742e98614b67/deploy-status)](https://app.netlify.com/projects/optimizetokens/deploys)
+
 # 🗜️ Compresor de Código para Claude AI
 
 Una aplicación web Angular que comprime código TypeScript, HTML, CSS y JSON para **minimizar el consumo de tokens** en conversaciones con Claude, mientras mantiene **100% de legibilidad** para el modelo.
@@ -84,7 +86,7 @@ La aplicación estará disponible en `http://localhost:4200`
 2. **Pega tu código** en el panel izquierdo
 3. **Click en "COMPRIMIR"**
 4. **Copia el resultado** del panel derecho
-5. **Usa el código comprimido** en Claude
+3. **Usa el código comprimido** en Claude
 
 ### Descompresión
 
